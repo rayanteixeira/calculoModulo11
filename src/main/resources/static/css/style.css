@@ -1,0 +1,35 @@
+.navbar-brand>img {
+	display: block;
+	width: 140px;
+	margin-top: -5px;
+}
+
+.navbar-default {
+	background-color: #bf0d0e;
+	border: 1px solid #bf0d0e;
+}
+
+section {
+	margin-top: 100px;
+}
+
+.table td, th{
+   text-align: center;   
+}
+
+/* .container {
+	width: 100vw;
+	height: 100vh;
+	background: #6C7A89;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center
+} 
+
+.box {
+	width: 300px;
+	height: 300px;
+	background: #fff;
+} */
+

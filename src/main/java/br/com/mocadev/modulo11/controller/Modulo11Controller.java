@@ -3,30 +3,44 @@ package br.com.mocadev.modulo11.controller;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import br.com.mocadev.modulo11.model.Modulo11;
 
 @Controller
-@RequestMapping("/")
 public class Modulo11Controller {
 
+	
+	/*
 	private static final String template = "Hello, %s!";
 	private final AtomicLong counter = new AtomicLong();
-
+	
 	@RequestMapping(method = RequestMethod.GET)
-	public @ResponseBody Modulo11 sayHello(
-			@RequestParam(value = "numero", required = false, defaultValue = "Stranger") String numero) {
-		return new Modulo11(counter.incrementAndGet(), String.format(template, numero));
-	}
+	@ResponseBody
+	public Modulo11 sayHello(@RequestParam(value = "numero", required = false, defaultValue = "Carinha que mora logo alí") String name) {
+		return new Modulo11(counter.incrementAndGet(), String.format(template, name));
+	}*/
 
+	@GetMapping("/")
+	public String inicio() {
+		return "redirect:/index";
+	}
+	
+	@GetMapping("/index")
+	public ModelAndView index() {
+		ModelAndView view = new ModelAndView("index");
+		return view;
+	}
 	
 	@RequestMapping(value = "teste/{dado}/{numDig}/{limMult}/{x10}", method = RequestMethod.GET)
-	public @ResponseBody String calculaDigitoMod1(@PathVariable String dado,@PathVariable int numDig,@PathVariable int limMult,@PathVariable boolean x10) {
+	@ResponseBody
+	public String calculaDigitoMod1(@PathVariable String dado,@PathVariable int numDig,@PathVariable int limMult,@PathVariable boolean x10) {
 
 		int mult, soma, i, n, dig;
 
