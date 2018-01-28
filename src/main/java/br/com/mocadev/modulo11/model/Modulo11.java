@@ -1,5 +1,7 @@
 package br.com.mocadev.modulo11.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,25 +10,30 @@ import javax.persistence.Id;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-public class Modulo11 {
+public class Modulo11 implements Serializable  {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	long id;
+	private Long id;
 	
-	@NotEmpty
-	String numero;
+	@NotEmpty(message = "Matrícula é uma informação obrigatória.")
+	private String numero;
+	
+	private String digitoVerificador;
 
-	public Modulo11(long id, String numero) {
-		this.id = id;
-		this.numero = numero;
+
+	
+	public Modulo11() {
+
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -38,31 +45,14 @@ public class Modulo11 {
 		this.numero = numero;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (int) (id ^ (id >>> 32));
-		return result;
+	public String getDigitoVerificador() {
+		return digitoVerificador;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Modulo11 other = (Modulo11) obj;
-		if (id != other.id)
-			return false;
-		return true;
+	public void setDigitoVerificador(String digitoVerificador) {
+		this.digitoVerificador = digitoVerificador;
 	}
 
-	
-	
-	
 	
 	
 	
